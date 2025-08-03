@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cine-blox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Cine-blox 🎬</h1>
+  <button id="newBtn">Novo Vídeo</button>
+
+  <div id="formContainer">
+    <input type="text" id="videoTitle" placeholder="Título do vídeo">
+    <input type="text" id="videoURL" placeholder="URL do vídeo (YouTube)">
+    <button class="add" onclick="addVideo()">Adicionar</button>
+  </div>
+
+  <div id="videoList"></div>
+
+  <script>
+    const newBtn = document.getElementById('newBtn');
+    const formContainer = document.getElementById('formContainer');
+    const videoList = document.getElementById('videoList');
+
+    newBtn.addEventListener('click', () => {
+      formContainer.style.display = 'block';
+    });
+
+    function addVideo() {
+      const title = document.getElementById('videoTitle').value;
+      const url = document.getElementById('videoURL').value;
+
+      const videoItem = document.createElement('div');
+      videoItem.className = 'videoItem';
+      videoItem.innerHTML = `
+        <h2>${title}</h2>
+        <iframe src="${url}" allowfullscreen></iframe>
+      `;
+      videoList.appendChild(videoItem);
+
+      formContainer.style.display = 'none';
+    }
+  </script>
+</body>
+  </html>
